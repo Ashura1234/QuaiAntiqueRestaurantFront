@@ -8,7 +8,10 @@ function checkCredentials()
 {
     //ici il faudra appeler l'API pour véfifier les crédentials en BDD
     if (mailInput.value == "test@gmail.com" && pwdInput.value == "Aze") {
-        alert("vous êtes connecté");
+        //alert("vous êtes connecté");
+    // va falloir récupérer ce token 
+        const token = "eigegijegjeogijorgjge";
+        setToken(token);
         window.location.replace("/");
     } else {
         mailInput.classList.add("is-invalid");
