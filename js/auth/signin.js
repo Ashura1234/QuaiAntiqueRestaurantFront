@@ -1,21 +1,44 @@
 const mailInput = document.getElementById("EmailInput");
 const pwdInput = document.getElementById("passwordInput");
 const btnConnexionInput = document.getElementById("btn-connexion");
+const signinForm = document.getElementById("signinForm");
 
 btnConnexionInput.addEventListener("click", checkCredentials);
 
 function checkCredentials()
 {
-    //ici il faudra appeler l'API pour véfifier les crédentials en BDD
-    if (mailInput.value == "test@gmail.com" && pwdInput.value == "Aze") {
-        //alert("vous êtes connecté");
-    // va falloir récupérer ce token 
-        const token = "eigegijegjeogijorgjge";
+    let dataForm = new FormData(signinForm);
+
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    
+    const raw = JSON.stringify({
+      "username": dataForm.get("email"),
+      "password": dataForm.get("mdp")
+    });
+    
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow"
+    };
+    
+    fetch(apiUrl+"logion", requestOptions)
+      .then((response) => {
+        if (response.ok) {
+        return response.json();
+        } else {
+            mailInput.classList.add("is-invalid");
+            pwdInput.classList.add("is-invalid");
+        }
+      })
+      .then((result) => 
+      {
+        const token = result.apiToken;
         setToken(token);
-        setCookie(roleCookieName, "client", 7);
+        setCookie(roleCookieName, result.roles[0], 7);
         window.location.replace("/");
-    } else {
-        mailInput.classList.add("is-invalid");
-        pwdInput.classList.add("is-invalid");
-    }
+        })
+      .catch((error) => console.error(error));
 }
