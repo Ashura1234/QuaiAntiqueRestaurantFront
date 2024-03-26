@@ -4,24 +4,24 @@
 </div>
 </div>
 <div class="container">
-<form>
+<form id="formulaireInscription">
     <div class="mb-3">
         <label for="NomInput" class="form-label">Nom</label>
-        <input type="text" class="form-control" id="NomInput" placeholder="Votre Nom">
+        <input type="text" class="form-control" id="NomInput" placeholder="Votre Nom" name="nom">
         <div class="invalid-feedback">
           Le nom est requis 
       </div>
       </div>
     <div class="mb-3">
         <label for="PrenomInput" class="form-label">Prénom</label>
-        <input type="text" class="form-control" id="PrenomInput" placeholder="Votre Prénom">
+        <input type="text" class="form-control" id="PrenomInput" placeholder="Votre Prénom" name="prenom">
         <div class="invalid-feedback">
           Le prénom est requis 
       </div>
       </div>
     <div class="mb-3">
       <label for="EmailInput" class="form-label">Email</label>
-      <input type="email" class="form-control" id="EmailInput" placeholder="test@email.fr">
+      <input type="email" class="form-control" id="EmailInput" placeholder="test@email.fr" name="email">
       <div class="invalid-feedback">
         L'email est incorrecte ! (exemple@gmail.com)
     </div>
@@ -31,7 +31,7 @@
     </div>
     <div class="mb-3">
       <label for="PasswordInput" class="form-label">mot de passe</label>
-      <input type="password" class="form-control" id="PasswordInput">
+      <input type="password" class="form-control" id="PasswordInput" name="mdp">
       <div class="invalid-feedback">
         mot de passe incorrect (au moin 8 charactère, une lettre MAJUSCULE, une lettre minuscule, un chiffre et un charactère spécial)
       </div>
