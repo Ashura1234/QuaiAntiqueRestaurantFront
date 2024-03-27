@@ -102,3 +102,31 @@ function SanitizeHtml(text) {
     tempHtml.textContent = text;
     return tempHtml.innerHTML;
 }
+
+
+function getInfoUser()
+{
+    const myHeaders = new Headers();
+    myHeaders.append("x-AUTH-TOKEN",getToken());
+ 
+    const requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow"
+      };  
+
+      fetch(apiUrl+"account/me", requestOptions)
+        .then(Response => {
+            if(Response.ok) {
+                return Response.json();
+            }else{
+                console.log("Impossible de récupérer le informations utilisateur");
+            }
+        })
+        .then(result =>{
+            return result;
+        })
+        .catch(error => {
+            console.error("erreur lors de la récupérations des données utilisateurs", error);
+        });
+}
